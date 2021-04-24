@@ -8,7 +8,7 @@ beautifulsoup4==4.9.3
 certifi==2020.12.5
 chardet==4.0.0
 click==7.1.2
-databases==0.4.2
+databases[postgresql]==0.4.2
 environs==9.3.1
 greenlet==1.0.0
 gunicorn==20.1.0
