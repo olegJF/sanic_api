@@ -11,7 +11,6 @@ app = Sanic('TV-Guide')
 app.config.update_config(settings)
 
 
-
 def serialize_dict(dct: dict) -> dict:
     tmp = {}
     for key, val in dct.items():
