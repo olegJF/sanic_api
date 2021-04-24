@@ -139,3 +139,4 @@ Thumbs.db
 
 # profiling data
 .prof
+/settings/local_settings.py
