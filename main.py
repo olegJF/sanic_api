@@ -8,6 +8,8 @@ from models import Channel, Guide, GuideModel
 from settings import settings, db
 
 app = Sanic('TV-Guide')
+app.config.update_config(settings)
+
 
 
 def serialize_dict(dct: dict) -> dict:
@@ -99,10 +101,11 @@ async def get_guides_by_channel(request: Request, slug: str):
         lst.append(tmp)
     return json(body=lst, status=200)
 
+setup_database()
 
 if __name__ == '__main__':
-    app.config.update_config(settings)
-    setup_database()
+    # app.config.update_config(settings)
+    # setup_database()
     app.run(
         host=app.config.HOST,
         port=app.config.PORT,
