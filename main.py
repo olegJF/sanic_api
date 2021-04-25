@@ -1,4 +1,5 @@
 import datetime as dt
+import sys
 
 from sanic import Sanic, response
 from sanic.request import Request
@@ -27,6 +28,7 @@ def setup_database():
     @app.listener('after_server_start')
     async def connect_to_db(*args, **kwargs):
         print('connected')
+        sys.stdout.flush()
         await app.db.connect()
 
     @app.listener('after_server_stop')
