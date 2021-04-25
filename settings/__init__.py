@@ -4,4 +4,3 @@ try:
 except ImportError:
     pass
 db = Database(db_url)
-db.connect()

@@ -26,6 +26,7 @@ def setup_database():
 
     @app.listener('after_server_start')
     async def connect_to_db(*args, **kwargs):
+        print('connected')
         await app.db.connect()
 
     @app.listener('after_server_stop')
