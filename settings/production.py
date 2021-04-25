@@ -4,4 +4,4 @@ from sanic.config import Config
 
 db_url = os.environ.get('SANIC_DB_URL')
 settings = Config()
-settings.update_config(dict(DEBUG=True, DB_URL=db_url))
+settings.update_config(dict(DEBUG=False, DB_URL=db_url))
