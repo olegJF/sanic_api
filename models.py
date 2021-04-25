@@ -92,6 +92,14 @@ class Channel:
         channel_id = await db.execute(query)
         return channel_id
 
+    @classmethod
+    async def create_many(cls, values):
+        lst = []
+        for row in values:
+            query = channel.insert().values(**row)
+            lst.append(await db.execute(query))
+        return lst
+
 
 class Guide:
     @classmethod

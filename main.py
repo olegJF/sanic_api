@@ -27,11 +27,7 @@ def setup_database():
 
     @app.listener('after_server_start')
     async def connect_to_db(*args, **kwargs):
-        print('wait to connect')
-        sys.stdout.flush()
         await app.db.connect()
-        print('connected')
-        sys.stdout.flush()
 
     @app.listener('after_server_stop')
     async def disconnect_from_db(*args, **kwargs):
@@ -48,6 +44,13 @@ async def create_channel(request: Request):
     dct = request.json
     channel_id = await Channel.create(**dct)
     return json({"channel_id": channel_id}, status=201)
+
+
+@app.post("/channels/many/")
+async def create_channels(request: Request):
+    lst = request.json
+    channels = await Channel.create_many(lst)
+    return json(body=channels, status=201)
 
 
 @app.route("/channels/<pk>/")
