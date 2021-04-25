@@ -27,9 +27,11 @@ def setup_database():
 
     @app.listener('after_server_start')
     async def connect_to_db(*args, **kwargs):
-        print('connected')
+        print('wait to connect')
         sys.stdout.flush()
         await app.db.connect()
+        print('connected')
+        sys.stdout.flush()
 
     @app.listener('after_server_stop')
     async def disconnect_from_db(*args, **kwargs):
