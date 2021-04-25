@@ -6,5 +6,3 @@ try:
 except ImportError:
     pass
 db = Database(db_url)
-print(db.url)
-sys.stdout.flush()
