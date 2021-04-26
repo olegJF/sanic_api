@@ -20,7 +20,7 @@ headers = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
     }
 api_url = 'https://api-production.vipplay.ru/api/v1/channels/program?from={}T00:00:00Z&to={}T23:59:59Z'
-nastroykino_url = 'https://www.nastroykino.ru/teleprogram/#{}'
+nastroykino_url = 'https://www.nastroykino.ru/teleprogram/{}'
 
 
 async def connect_to_db(*args, **kwargs):
@@ -35,7 +35,7 @@ async def get_async_data_from_nastroykino(url: str, channels_dct: dict) -> list:
     pr_list = []
     tomorrow_str = f"tv_{dt.datetime.strftime(tomorrow, '%Y%m%d')}"
     day = today.isoweekday()
-    format_url = f'next/{tomorrow_str}' if day == 7 else tomorrow_str
+    format_url = f'next/#{tomorrow_str}' if day == 7 else f'#{tomorrow_str}'
     # if day == 7 https://www.nastroykino.ru/teleprogram/next/#tv_20210419
     url = url.format(format_url)
     async with aiohttp.ClientSession() as session:
